@@ -1,0 +1,3 @@
+**/node_modules/*
+selectors_copied.js
+cypress/integration/examples/

@@ -1,0 +1,18 @@
+{
+  "authentication": {
+    "passwordResetInfo": "Enter the e-mail associated with your account. We will send the password link to this account if such account exists.",
+    "emailLoggingInfo": "Warning! Username is no longer available. Please use e-mail for logging in.",
+    "passwordResetLink": "Forgot your password?",
+    "missingEmail": "Email is missing",
+    "missingPassword": "Password is missing",
+    "loginFailure": "Login failure. Check email or password",
+    "passwordResetIncorrectEmail": "The email is not correct!",
+    "checkyourMailbox": "Please check your mailbox for reset password link.",
+    "redirectingToLogin": "Redirecting to login!",
+    "deleteUserModalText": "Delete user, are you sure?",
+    "wrongEmailDomain": "Email is not in one of the allowed domains",
+    "tooShortPassword": "Your password has to be at least 8 characters long!",
+    "noRequiredCharactersPassword": "Your password has to contain at least one uppercase and lowercase letter, one digit and special character!",
+    "userCreated": "New user has been created!"
+  }
+}

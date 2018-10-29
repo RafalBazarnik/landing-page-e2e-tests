@@ -1,0 +1,35 @@
+{
+    "extends": "airbnb-base",
+    "plugins": [
+      "cypress",
+      "chai-friendly"
+    ],
+    "env": {
+      "cypress/globals": true
+    },
+    "overrides": [
+      {
+        "files": [ "**/*.spec.js", "**/*.test.js" ]
+      }
+    ],
+    "rules": {
+      "max-len": [
+        "error", 120, 2, {
+          "ignoreUrls": true,
+          "ignoreComments": false,
+          "ignoreRegExpLiterals": true,
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true
+        }
+      ],
+      "linebreak-style": 0,
+      "no-unused-expressions": 0,
+      "chai-friendly/no-unused-expressions": 2,
+      "prefer-arrow-callback": 0,
+      "func-names": 0,
+      "no-param-reassign": 0,
+      "prefer-destructuring": 0,
+      "no-restricted-syntax": 0,
+      "guard-for-in": 0
+    }
+}

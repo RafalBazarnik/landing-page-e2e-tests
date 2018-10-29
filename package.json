@@ -1,0 +1,22 @@
+{
+  "name": "landing-page-e2e-tests",
+  "version": "1.0.0",
+  "description": "Landing Page E2E Automation",
+  "scripts": {
+    "test": "./node_modules/.bin/cypress open",
+    "cypress:open": "cypress open"
+  },
+  "author": "Rafał Bazarnik",
+  "license": "MIT",
+  "dependencies": {
+    "cypress": "^3.1.0",
+    "faker": "^4.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.8.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-chai-friendly": "^0.4.1",
+    "eslint-plugin-cypress": "^2.0.1",
+    "eslint-plugin-import": "^2.14.0"
+  }
+}
