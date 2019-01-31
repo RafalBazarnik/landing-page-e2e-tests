@@ -15,6 +15,10 @@ beforeEach(function () {
   cy.fixture('static_texts.json').as('staticTexts');
 });
 
+afterEach(function () {
+  cy.reload();
+});
+
 it('Redirects to login page with warning message and reset password link', function () {
   cy.hash().should('eq', '#/login');
   cy.get(selectors.authentication.emailWarningMessage).invoke('text').should('contain', this.staticTexts.authentication.emailLoggingInfo);
@@ -34,9 +38,9 @@ it('Empty email and password submitted', function () {
   cy.wait('@loginPOST').then((resp) => {
     expect(resp.status).to.equal(401);
     expect(resp.response.body.status).to.equal(false);
-    expect(resp.response.body.error).to.equal(this.staticTexts.authentication.missingEmail);
+    expect(resp.response.body.error).to.equal(this.staticTexts.authentication.loginFailure);
   });
-  cy.get(selectors.common.toastBody).invoke('text').should('eq', this.staticTexts.authentication.missingEmail);
+  cy.get(selectors.common.toastBody).invoke('text').should('eq', this.staticTexts.authentication.loginFailure);
   cy.get(selectors.common.closeToast).click();
   cy.hash().should('eq', '#/login');
 });
@@ -46,9 +50,9 @@ it('Random email and empty password submitted', function () {
   cy.wait('@loginPOST').then((resp) => {
     expect(resp.status).to.equal(401);
     expect(resp.response.body.status).to.equal(false);
-    expect(resp.response.body.error).to.equal(this.staticTexts.authentication.missingPassword);
+    expect(resp.response.body.error).to.equal(this.staticTexts.authentication.loginFailure);
   });
-  cy.get(selectors.common.toastBody).invoke('text').should('eq', this.staticTexts.authentication.missingPassword);
+  cy.get(selectors.common.toastBody).invoke('text').should('eq', this.staticTexts.authentication.loginFailure);
   cy.get(selectors.common.closeToast).click();
   cy.hash().should('eq', '#/login');
 });
@@ -65,25 +69,25 @@ it('Random email and password submitted', function () {
   cy.hash().should('eq', '#/login');
 });
 
-it('Proper email and password submitted with inactive account', function () {
-  cy.getUserToken(dataObject);
-  cy.login(dataObject);
+// it('Proper email and password submitted with inactive account', function () {
+//   cy.getUserToken(dataObject);
+//   cy.login(dataObject);
 
-  const email = faker.internet.email(undefined, undefined, dataObject.domain_1);
-  const name = faker.internet.userName();
-  const password = 'Qwerty123!@#';
-  const permissions = permissionsEnum.ALL_ADMIN;
-  cy.createUser({
-    email, name, password, permissions,
-  }, dataObject);
-  cy.editUser(name, password, permissions, false, dataObject);
-  cy.loginUI({ email, password });
-  cy.get(selectors.common.toastBody).invoke('text').should('eq', this.staticTexts.authentication.loginFailure);
-  cy.get(selectors.common.closeToast).click();
-  cy.hash().should('eq', '#/login');
+//   const email = faker.internet.email(undefined, undefined, dataObject.domain_1);
+//   const name = faker.internet.userName();
+//   const password = 'Qwerty123!@#';
+//   const permissions = permissionsEnum.ALL_ADMIN;
+//   cy.createUser({
+//     email, name, password, permissions,
+//   }, dataObject);
+//   cy.editUser(name, password, permissions, false, dataObject);
+//   cy.loginUI({ email, password });
+//   cy.get(selectors.common.toastBody).invoke('text').should('eq', this.staticTexts.authentication.loginFailure);
+//   cy.get(selectors.common.closeToast).click();
+//   cy.hash().should('eq', '#/login');
 
-  cy.deleteUser(dataObject);
-});
+//   cy.deleteUser(dataObject);
+// });
 
 it('Proper email and password submitted with active account', function () {
   cy.loginUI({ email: dataObject.email, password: dataObject.password });

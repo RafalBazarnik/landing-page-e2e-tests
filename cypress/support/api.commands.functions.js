@@ -36,7 +36,7 @@ module.exports = {
     email, name, password, permissions,
   }, dataObject) => {
     cy.request({
-      method: 'PUT',
+      method: 'POST',
       url: `${dataObject.api_url}/users`,
       headers: {
         'Accept': 'application/json', // eslint-disable-line
@@ -50,7 +50,7 @@ module.exports = {
         permissions,
       },
     }).then((resp) => {
-      dataObject.temporary.id = resp.body.id;
+      dataObject.temporary.id = resp.body.user.id;
     });
   },
   deleteUser: (dataObject) => {
