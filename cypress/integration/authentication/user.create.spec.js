@@ -68,7 +68,7 @@ it('Password validation - no special character', function () {
   cy.createUserUI(user);
 });
 
-it.only('Create user', function () {
+it('Create user', function () {
   const user = userHelper.getRandomUserData();
   user.email = faker.internet.email(undefined, undefined, dataObject.domain_2);
   user.password = 'Katowice1!';

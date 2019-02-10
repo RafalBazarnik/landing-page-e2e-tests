@@ -56,10 +56,10 @@ module.exports = {
     regionsLabelsCreate: 'div .users-page__territory',
     permissionsDropdownButtonCreate: index => `.users-page__create__form > div:nth-of-type(${index + 2}) .dropdownlist__button`,
     permissionsLevelOptionsCreate: index => `.users-page__create__form > div:nth-of-type(${index + 2}) .dropdownlist__items`,
-    editUser : {
+    editUser: {
       enabled: '',
       name: '',
-      password: ''
-    }
+      password: '',
+    },
   },
 };
